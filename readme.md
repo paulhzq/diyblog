@@ -34,3 +34,17 @@ Don't forget the . in the end otherwise you will have 3 diyblog fold eventually.
 > python manage.py runserver
 
 Open the browser and check: localhost:8000
+
+___
+
+## create the blog application
+
+> python manage.py startapp blog
+
+### Register the blog.
+
+Inside the diyblog/diyblog/settings.py and find the definition for the INSTALLED_APPS list. And add the 'blog.apps.BlogConfig' in the end.
+
+### Change the TIME_ZONE.
+
+Change the TIME_ZONE to your time such as America/Detroit. 
