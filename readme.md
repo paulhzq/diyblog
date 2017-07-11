@@ -47,4 +47,34 @@ Inside the diyblog/diyblog/settings.py and find the definition for the INSTALLED
 
 ### Change the TIME_ZONE.
 
-Change the TIME_ZONE to your time such as America/Detroit. 
+Change the TIME_ZONE to your time such as America/Detroit.
+
+### Hooking up the URL mapper
+
+In the diyblog/urls.py file add the lines below to the bottom of the file in order to add a new list item to the urlpatterns list.
+
+
+>from django.conf.urls import include
+
+>urlpatterns += [
+    url(r'^blog/', include('blog.urls')),
+]
+
+Now let's redirect the root URL of our site (i.e. 127.0.0.1:8000) to the URL 127.0.0.1:8000/catalog/.
+
+>from django.views.generic import RedirectView
+
+>urlpatterns += [
+    url(r'^$', RedirectView.as_view(url='/blog/', permanent=True)),
+]
+
+Create a file inside your blog folder called urls.py, and add the following text to define the (empty) imported urlpatterns.
+
+>from django.conf.urls import url
+
+>from . import views
+
+
+>urlpatterns = [
+
+>]

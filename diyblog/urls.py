@@ -19,3 +19,12 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
+
+from django.conf.urls import include
+
+urlpatterns +=[url(r'^blog/',include('blog.urls'))]
+
+from django.views.generic import RedirectView
+urlpatterns += [
+    url(r'^$', RedirectView.as_view(url='/blog/', permanent=True)),
+]
