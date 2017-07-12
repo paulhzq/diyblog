@@ -78,3 +78,9 @@ Create a file inside your blog folder called urls.py, and add the following text
 >urlpatterns = [
 
 >]
+
+Run the following commands to define tables for those models in the database (make sure you are in the directory that contains manage.py):
+
+>python3 manage.py makemigrations
+
+>python3 manage.py migrate
