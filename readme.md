@@ -81,7 +81,6 @@ Create a file inside your blog folder called urls.py, and add the following text
 
 Run the following commands to define tables for those models in the database (make sure you are in the directory that contains manage.py):
 
-<<<<<<< HEAD
 >python manage.py makemigrations
 
 >python manage.py migrate
@@ -91,8 +90,3 @@ Create the superuser for the website.
 >python manage.py superuser
 
 Enter your username, email address and password which you will need when you browser hit /admin to get into the admin page.
-=======
->python3 manage.py makemigrations
-
->python3 manage.py migrate
->>>>>>> 15cb78e2548230c45ea9da224661b805d1c077ed
