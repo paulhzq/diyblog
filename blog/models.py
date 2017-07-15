@@ -1,28 +1,51 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+from datetime import datetime
+
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.TextField(max_length=2000,help_text='Enter your blog text here.')
     author = models.ForeignKey('Author')
-    post_date =models.DateTimeField()
+    post_date =models.DateTimeField(default=datetime.now,blank = True)
+
+    class Meta:
+        ordering = ["post_date"]
 
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('blog-detail',args=[str(self.id)])
+
 class Comment(models.Model):
-    content = models.TextField()
-    date = models.DateTimeField()
-    comment_post = models.ForeignKey('Post')
+    content = models.TextField(max_length=1000, help_text='Enter comment about blog here.')
+    date = models.DateTimeField(default=datetime.now,blank = True)
+    comment_post = models.ForeignKey('Post',on_delete=models.CASCADE)
     author = models.ForeignKey(User)
 
+    class Meta:
+        ordering = ["date"]
+
     def __str__(self):
-        return self.content
+        len_title=75
+        if len(self.description)>len_title:
+            titlestring=self.description[:len_title] + '...'
+        else:
+            titlestring=self.description
+        return titlestring
 
 class Author(models.Model):
-    firstname = models.CharField(max_length=36)
-    lastname = models.CharField(max_length=36)
-    bio = models.TextField()
+    """
+    Model representing a blog author.
+    """
+
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    bio = models.TextField(max_length=400, help_text="Enter your bio details here.")
 
     def __str__(self):
-        return self.firstname + ' '  + self.lastname
+        return self.author.username
+
+    def get_absolute_url(self):
+        return reverse('blogs-by-author',args=[str(self.id)])
