@@ -3,3 +3,4 @@ __pycache__
 .pyc
 .account.txt
 diyblog_env
+static
