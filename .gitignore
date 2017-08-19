@@ -2,5 +2,5 @@
 __pycache__
 .pyc
 .account.txt
-diyblog_env
-static
+diyblog_env/
+static/

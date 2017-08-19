@@ -28,7 +28,7 @@ class Comment(models.Model):
     """
     content = models.TextField(max_length=1000, help_text='Enter comment about blog here.')
     date = models.DateTimeField(default=datetime.now,blank = True)
-    comment_post = models.ForeignKey('Post',on_delete=models.CASCADE)
+    post = models.ForeignKey('Post',on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
