@@ -2,7 +2,7 @@
 {% block content %}
     <h1>Title: {{post.title}}</h1>
     <p><strong>Post date: </strong>{{post.post_date}}</p>
-    <p><strong>Author: </strong><a href="#">{{post.author}}</a></p>
+    <p><strong>Author: </strong><a href="{url 'author-detail' post.author.pk}">{{post.author}}</a></p>
     <p><strong>Description: </strong></p>
     <p>{{post.content}}</p>
     <p></p>
@@ -10,7 +10,7 @@
     <h1>Comments:</h1>
     <ul>
       {% for c_post in post.comment_set.all %}
-      <li>{{c_post.author}}:{{c_post.content}}</li>  
+      <li>{{c_post.author}}:{{c_post.content}}</li>
       {% endfor %}
     </ul>
 
