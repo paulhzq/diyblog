@@ -12,7 +12,18 @@ def index(request):
     return render(request,'index.html',context={})
 
 class BlogListView(generic.ListView):
-    model = Post;
+    model = Post
 
 class BlogDetailView(generic.DetailView):
-    model = Post;
+    model = Post
+
+class BloggerListView(generic.ListView):
+    model = Author
+
+class BloggerDetailView(generic.DetailView):
+    # model = Author
+
+    def get_queryset(self):
+        id = self.kwargs['pk']
+        author = Author.objects.filter(id = id)
+        return Post.objects.filter(author = author)

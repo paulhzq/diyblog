@@ -54,4 +54,4 @@ class Author(models.Model):
         return self.author.username
 
     def get_absolute_url(self):
-        return reverse('blogs-by-author',args=[str(self.id)])
+        return reverse('blogger-detail',args=[str(self.id)])

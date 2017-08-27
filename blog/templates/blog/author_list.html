@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<ul>
+  {% for author in author_list %}
+    <li><a href="{% url 'blogger-detail' author.pk %}">{{author}}</a></li>
+  {% endfor %}
+
+</ul>
+
+
+{% endblock %}
