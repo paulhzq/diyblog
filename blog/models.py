@@ -27,7 +27,7 @@ class Comment(models.Model):
     Model representing a comment against a blog post.
     """
     content = models.TextField(max_length=1000, help_text='Enter comment about blog here.')
-    date = models.DateTimeField(default=datetime.now,blank = True)
+    date = models.DateTimeField(default=datetime.now)
     post = models.ForeignKey('Post',on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 

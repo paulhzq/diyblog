@@ -1,12 +1,13 @@
 {% extends "base_generic.html" %}
 {% block content %}
-<h1>Blogger:{{author}}</h1>
+<h1>Blogger: {{author}}</h1>
 <h2>Bio</h2>
 <p>{{ author.bio }}</p>
 <h2>Blogs list</h2>
 <ul>
-
-
+  {% for c_post in post_list %}
+  <li><a href="{{ c_post.get_absolute_url }}">{{c_post.title}}</a>({{c_post.date}})</li>
+  {% endfor %}
 </ul>
 
 
