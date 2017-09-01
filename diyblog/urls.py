@@ -23,7 +23,7 @@ urlpatterns = [
 from django.conf.urls import include
 
 urlpatterns +=[url(r'^blog/',include('blog.urls'))]
-
+urlpatterns +=[url(r'^accounts/', include('django.contrib.auth.urls'))]
 from django.views.generic import RedirectView
 urlpatterns += [
     url(r'^$', RedirectView.as_view(url='/blog/', permanent=True)),
